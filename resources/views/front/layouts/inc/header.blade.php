@@ -9,13 +9,13 @@
           data-target="#navigation"> <span class="navbar-toggler-icon"></span>
         </button>
       </div>
-      <form action="#!" class="search order-lg-3 order-md-2 order-3 ml-auto">
-        <input id="search-query" name="s" type="search" placeholder="Search..." autocomplete="off">
+      <form action="{{ route('search_posts') }}" class="search order-lg-3 order-md-2 order-3 ml-auto">
+        <input id="search-query" name="query" value ="{{ Request ('query') }}" type="search" placeholder="Tìm kiếm bài viết" autocomplete="off">
       </form>
       <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
         <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
           <li class="nav-item"> 
-            <a class="nav-link" href="about.html">About Me</a>
+            <a class="nav-link" href="about.html">Giới thiệu</a>
           </li>
           @foreach (App\Models\Category::whereHas('subcategories', function ($query) {
             $query->whereHas('posts');
@@ -27,16 +27,16 @@
             </a>
             <div class="dropdown-menu"> 
               @foreach (App\Models\SubCategory::where('parent_category', $category->id)->whereHas('posts')->orderBy('ordering', 'asc')->get() as $subcategory)
-              <a class="dropdown-item" href="">{{ $subcategory->subcategory_name }}</a>
+              <a class="dropdown-item" href="{{ route('category_posts', $subcategory->slug) }}">{{ $subcategory->subcategory_name }}</a>
               @endforeach
             </div>
           </li>
           @endforeach
           @foreach (App\Models\SubCategory::where('parent_category', 0)->whereHas('posts')->get() as $subcategory)
-          <li class="nav-item"> <a class="nav-link" href="contact.html">{{ $subcategory->subcategory_name }}</a>
+          <li class="nav-item"> <a class="nav-link" href="{{ route('category_posts', $subcategory->slug) }}">{{ $subcategory->subcategory_name }}</a>
           </li>
           @endforeach
-          <li class="nav-item"> <a class="nav-link" href="contact.html">Contact</a>
+          <li class="nav-item"> <a class="nav-link" href="contact.html">Liên hệ</a>
           </li>
         </ul>
       </div>

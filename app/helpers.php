@@ -80,7 +80,8 @@ if(!function_exists('latest_home_6posts')){
                     ->skip(1)
                     ->limit(6)
                     ->orderBy('created_at','desc')
-                    ->get();  
+                    ->paginate(6)
+                    ->appends(request()->input());
     }
 
 }
