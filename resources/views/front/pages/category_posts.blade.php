@@ -73,6 +73,17 @@
                       @include('front.layouts.inc.recommended_list') 
                   </div>
               </div>
+
+              {{-- hiển thị các post xem nhiều --}}
+              @if (topview_sidebar_posts())
+              <div class="col-lg-12 col-md-6">
+                <div class="widget">
+                  <h2 class="section-title mb-3">Xem Nhiều</h2>
+                  @include('front.layouts.inc.topview_list')
+                </div>
+              </div>
+              @endif
+
               @if (categories())
               <div class="col-lg-12 col-md-6">
                   <div class="widget">

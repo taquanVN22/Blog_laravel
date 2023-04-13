@@ -19,7 +19,7 @@ class BlogController extends Controller
             }else{
                 $posts = Post::where('category_id',$subcategory->id)
                             ->orderBy('created_at','desc')
-                            ->paginate(6);
+                            ->paginate(8);
                 //  truyền qua trang danh mục cuat blog 
                 $data =[
                     'pageTitle'=>'Category - '.$subcategory->subcategory_name,
@@ -47,7 +47,7 @@ class BlogController extends Controller
             $posts = $posts->with('subcategory')
                             ->with('author')
                             ->orderBy('created_at','desc')
-                            ->paginate(6);
+                            ->paginate(8);
             $count = $posts->total();
             $data = [
                 'pageTitle'=>'Tìm thấy '.$count.' kết quả cho : '.request()->query('query'),
@@ -68,6 +68,10 @@ class BlogController extends Controller
                         ->with('author')
                         ->first();
 
+            // Increment view count
+            $post->views += 1;
+            $post->save();
+
             $post_tags = explode(',',$post->post_tags);
             $related_posts = Post::where('id','!=',$post->id)
                                  ->where(function($query) use ($post_tags,$post){
@@ -77,7 +81,7 @@ class BlogController extends Controller
                                         }
                                     })
                                     ->inRandomOrder()
-                                    ->take(3)
+                                    ->take(5)
                                     ->get();
 
             $data=[

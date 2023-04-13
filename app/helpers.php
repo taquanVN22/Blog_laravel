@@ -74,13 +74,18 @@ if(!function_exists('single_latest_post')){
 // Hàm trả về 6 bài viết mới nhất (sau bài viết mới nhất đã trả về bởi hàm single_latest_post()) để hiển thị trên trang chủ của trang web
 if(!function_exists('latest_home_6posts')){
     function latest_home_6posts(){
-        
+
+        $firstPost = Post::orderBy('created_at', 'desc')->first();
+        $except = $firstPost->id;
+
         return Post::with('author')
                     ->with('subcategory')
-                    ->skip(1)
+                    ->where('id', '!=', $except)
+                    // ->skip(1) //bỏ qua $value bản ghi đầu tiên trong kết quả truy vấn.
                     ->limit(6)
                     ->orderBy('created_at','desc')
                     ->paginate(6)
+                    // ->get();
                     ->appends(request()->input());
     }
 
@@ -129,14 +134,14 @@ if(!function_exists('categories')){
 
 }
 
-// lastest post
+//bai iet mới nhất
 
-if(!function_exists('latest_sidebar_posts')){
-    function latest_sidebar_posts($except = null,$limit =4){
+if(!function_exists('topview_sidebar_posts')){
+    function topview_sidebar_posts($except = null,$limit = 4){
         
         return  Post::where('id','!=',$except)
                     ->limit($limit)
-                    ->orderBy('created_at','desc')
+                    ->orderBy('views','desc') // Sắp xếp theo views giảm dần
                     ->get();
     }
 
@@ -144,6 +149,8 @@ if(!function_exists('latest_sidebar_posts')){
 
 
 }
+
+
 //  lấy tất cả thẻ tag
 if(!function_exists('all_tags')){
     function all_tags(){

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('post_content')->nullable();
             $table->string('featured_image')->nullable();
             $table->integer('status')->default(1);
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }

@@ -101,6 +101,7 @@
       </div>
     </div>
   </div>
+
   <div class="col-lg-4">
     <div class="widget-blocks">
       <div class="row">
@@ -108,7 +109,7 @@
           <div class="widget">
             <div class="widget-body">
               <img loading="lazy" decoding="async" src="/front/images/author.jpg" alt="About Me" class="w-100 author-thumb-sm d-block">
-              <h2 class="widget-title my-3">Hootan Safiyari</h2>
+              <h2 class="widget-title my-3">Hootan sdSafiyari</h2>
               <p class="mb-3 pb-2">Hello, I’m Hootan Safiyari. A Content writter, Developer and Story teller. Working as a Content writter at CoolTech Agency. Quam nihil …</p> <a href="about.html" class="btn btn-sm btn-outline-primary">Know
                 More</a>
             </div>
@@ -123,6 +124,16 @@
             @include('front.layouts.inc.recommended_list') 
           </div>
         </div>
+      @endif
+
+      {{-- hiển thị các post xem nhiều --}}
+      @if (topview_sidebar_posts())
+      <div class="col-lg-12 col-md-6">
+        <div class="widget">
+          <h2 class="section-title mb-3">Xem Nhiều</h2>
+          @include('front.layouts.inc.topview_list')
+        </div>
+      </div>
       @endif
 
       {{-- danh mục --}}

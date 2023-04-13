@@ -63,7 +63,8 @@
                         <input type="text" value="{{ $post->post_tags }}" name="post_tags" placeholder="Nhập từ khóa bài viết" class="form-control">
                       </div>
                       <div style="mb-3">
-                        <button class="btn btn-primary" style="float: right;" type="submit">Cập nhật</button>
+                        <a class="text-decoration-none" href="{{ route('author.posts.all_posts') }}"><button class="btn btn-danger"  type="button">Trở về</button>&nbsp; </a>
+                        <button class="btn btn-primary"  type="submit">Cập nhật</button>
                       </div>
                       
                 </div>
