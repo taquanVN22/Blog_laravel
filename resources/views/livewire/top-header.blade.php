@@ -138,6 +138,7 @@
                     </span>
                   </a>
                 </li>
+                @if (auth()->user()->type == 1)
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('author.categories') }}" >
                     <span class="nav-link-title">
@@ -152,6 +153,7 @@
                     </span>
                   </a>
                 </li>
+                @endif
                 @if (auth()->user()->type == 1)
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('author.authors') }}" >
@@ -193,6 +195,7 @@
                     </div>
                   </div>
                 </li>
+                @if (auth()->user()->type == 1)
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#navbar-layout" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false" >
                     <span class="nav-link-title">
@@ -214,6 +217,7 @@
                     </div>
                   </div>
                 </li>
+                @endif
               </ul>
             </div>
           </div>
