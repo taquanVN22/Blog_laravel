@@ -116,7 +116,6 @@ class Categories extends Component
     // Subcategories
     public function addSubCategory(){
         $this->validate([
-            'parent_category' => 'required',
             'subcategory_name' => 'required|unique:sub_categories,subcategory_name',
         ]);
 

@@ -27,10 +27,13 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	{{-- <link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"> --}}
 	<link href="https://fonts.googleapis.com/css2?family=Arial&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 	<!-- # CSS Plugins -->
 	<link rel="stylesheet" href="/front/plugins/bootstrap/bootstrap.min.css">
 	@stack('stylesheets')
+
+
 
 	<!-- # Main Style Sheet -->
 	<link rel="stylesheet" href="/front/css/style.css">
